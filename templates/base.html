@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="{% static 'javascript.js' %}" defer=""></script>
+    <title>nxcms</title>
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'homepage:homepage' %}">Homepage</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About me</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="text_body">
+            {% block page_content %}{% endblock %}
+        </div>
+      </div>
+
+      <div class="footer">Created by Balázs Nagy - 2023</div>
+
+</body>
+</html>
