@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <script src="{% static 'javascript.js' %}" defer=""></script>
-    <title>nxcms</title>
+    <title>{{ page_name }}</title>
 </head>
 <body>
     <header>
         <nav>
           <ul>
+            <li><b>{{ page_name }}</b></li>
             <li><a href="{% url 'homepage:homepage' %}">Homepage</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="{% url 'blog:blog' %}">Blog</a></li>
             <li><a href="#">About me</a></li>
             {% if user.is_authenticated %}
             <li class="right"><a href="{% url 'accounts:accounts' %}">Dashboard</a> / <a href="{% url 'accounts:logout' %}">Logout</a></li>
@@ -30,7 +31,7 @@
         </div>
       </div>
 
-      <div class="footer">Created by Balázs Nagy - 2023</div>
+      <div class="footer">{{ page_footer }}</div>
 
 </body>
 </html>

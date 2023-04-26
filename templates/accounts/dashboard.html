@@ -4,12 +4,12 @@
 {{ admin }}
 <div class="tab-container">
     <div class="tab-header">
-      <button class="tab-button active" data-tab="tab1">Edit homepage</button>
-      <button class="tab-button" data-tab="tab2">Post a blog</button>
-      <button class="tab-button" data-tab="tab3">Site settings</button>
+        <button class="tab-button active" data-tab="tab1">Edit homepage</button>
+        <button class="tab-button" data-tab="tab2">Post a blog</button>
+        <button class="tab-button" data-tab="tab3">Site settings</button>
     </div>
     <div class="tab-content">
-      <div class="tab-panel active" data-tab="tab1">
+        <div class="tab-panel active" data-tab="tab1">
         <form method="POST">
             {% csrf_token %}
             <h1>Homepage edit:</h1>
@@ -21,13 +21,23 @@
             <br>
             <input type="submit" value="Save" class="button-input" name="homepage_form">
         </form>
-      </div>
-      <div class="tab-panel" data-tab="tab2">
+        </div>
+        <div class="tab-panel" data-tab="tab2">
         <h2>Post a blog</h2>
-      </div>
-      <div class="tab-panel" data-tab="tab3">
-        <h2>Site settings</h2>
-      </div>
+        </div>
+        <div class="tab-panel" data-tab="tab3">
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Site settings</h1>
+            <label>Page name</label><br>
+            <input type="text" name="page_name" class="user-input" value="{{ page_settings.name }}">
+            <br>
+            <label>Footer text</label><br>
+            <input type="text" name="footer_text" class="user-input" value="{{ page_settings.footer_text }}">
+            <br>
+            <input type="submit" value="Save" class="button-input" name="site_settings_form">
+        </form>
+        </div>
     </div>
-  </div>
+</div>
 {% endblock %}
