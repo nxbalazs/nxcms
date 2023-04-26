@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{{ admin }}
+<div class="container-center">
+<form method="POST" class="page-form">
+    {% csrf_token %}
+    <h1>Homepage edit:</h1>
+    <label>Title</label><br>
+    <input type="text" name="title" class="user-input" value="{{ homepage_body.title }}">
+    <br>
+    <label>Body</label><br>
+    <textarea name="body" class="user-input" rows="10" cols="70">{{ homepage_body.body }}</textarea>
+    <br>
+    <input type="submit" value="Save" class="button-input" name="homepage_form">
+</form>
+</div>
+{% endblock %}

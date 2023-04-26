@@ -11,7 +11,7 @@ header {
     color: #000000;
     padding: 20px;
     width: 100%;
-    border-bottom: 1px solid #383838;
+    border-bottom: 1px solid #ccc;
 }
 
 nav {
@@ -79,7 +79,7 @@ nav a:hover, nav a:visited:hover {
     color: #383838;
     text-align: center;
     font-size: 14px;
-    border-top: 1px solid #383838;
+    border-top: 1px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,6 +88,12 @@ nav a:hover, nav a:visited:hover {
 .fixed-position {
     position: fixed;
     bottom: 0;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .link_on_page {
@@ -108,4 +114,43 @@ nav a:hover, nav a:visited:hover {
     -ms-transition: color 0.5s ease-in-out;
     -o-transition: color 0.5s ease-in-out;
     transition: color 0.5s ease-in-out;
+}
+
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-form {
+    width: min-content;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.user-input:focus {
+    border: 1px solid lightblue;
+}
+
+.button-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.button-input:hover {
+    background-color: #ccc;
 }

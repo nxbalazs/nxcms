@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_content %}
+{% if homepage_body == 'False' %}
 <h1>Hello! First steps</h1><br>
 To put the blog into operation, you need to execute the following commands:
 <ul>
@@ -11,4 +12,8 @@ To put the blog into operation, you need to execute the following commands:
     <li>Customize the page as you wish or add a new post to the blog on the dashboard interface.</li>
 </ul>
 For more info how to setup a django app visit: <a href="https://docs.djangoproject.com/en/4.2/intro/tutorial02/#creating-an-admin-user" target="_blank" class="link_on_page">Django documentation</a>
+{% else %}
+<h1>{{ homepage_body.title }}</h1><br>
+{{ homepage_body.body | linebreaks }}
+{% endif %}
 {% endblock %}

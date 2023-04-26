@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="container-center">
+<form method="POST" class="login-form">
+    {% csrf_token %}
+    <h1>Logout?</h1>
+    <input type="submit" value="Loout" class="button-input">
+</form>
+</div>
+{% endblock %}

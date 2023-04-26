@@ -16,7 +16,11 @@
             <li><a href="{% url 'homepage:homepage' %}">Homepage</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">About me</a></li>
-            <li class="right"><a href="">Login</a></li>
+            {% if user.is_authenticated %}
+            <li class="right"><a href="{% url 'accounts:accounts' %}">Dashboard</a> / <a href="{% url 'accounts:logout' %}">Logout</a></li>
+            {% else %}
+            <li class="right"><a href="{% url 'accounts:login' %}">Login</a></li>
+            {% endif %}
           </ul>
         </nav>
       </header>
