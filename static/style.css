@@ -154,3 +154,41 @@ code {
 .button-input:hover {
     background-color: #ccc;
 }
+
+
+.tab-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+  
+.tab-header {
+    display: flex;
+    justify-content: left;
+    background-color: #f5f5f5;
+}
+  
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.tab-button.active {
+    background-color: #ddd;
+}
+  
+.tab-content {
+    padding: 20px;
+}
+  
+.tab-panel {
+    display: none;
+}
+  
+.tab-panel.active {
+    display: block;
+}

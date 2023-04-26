@@ -2,17 +2,32 @@
 
 {% block page_content %}
 {{ admin }}
-<div class="container-center">
-<form method="POST" class="page-form">
-    {% csrf_token %}
-    <h1>Homepage edit:</h1>
-    <label>Title</label><br>
-    <input type="text" name="title" class="user-input" value="{{ homepage_body.title }}">
-    <br>
-    <label>Body</label><br>
-    <textarea name="body" class="user-input" rows="10" cols="70">{{ homepage_body.body }}</textarea>
-    <br>
-    <input type="submit" value="Save" class="button-input" name="homepage_form">
-</form>
-</div>
+<div class="tab-container">
+    <div class="tab-header">
+      <button class="tab-button active" data-tab="tab1">Edit homepage</button>
+      <button class="tab-button" data-tab="tab2">Post a blog</button>
+      <button class="tab-button" data-tab="tab3">Site settings</button>
+    </div>
+    <div class="tab-content">
+      <div class="tab-panel active" data-tab="tab1">
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Homepage edit:</h1>
+            <label>Title</label><br>
+            <input type="text" name="title" class="user-input" value="{{ homepage_body.title }}">
+            <br>
+            <label>Body</label><br>
+            <textarea name="body" class="user-input" rows="10" cols="50">{{ homepage_body.body }}</textarea>
+            <br>
+            <input type="submit" value="Save" class="button-input" name="homepage_form">
+        </form>
+      </div>
+      <div class="tab-panel" data-tab="tab2">
+        <h2>Post a blog</h2>
+      </div>
+      <div class="tab-panel" data-tab="tab3">
+        <h2>Site settings</h2>
+      </div>
+    </div>
+  </div>
 {% endblock %}
