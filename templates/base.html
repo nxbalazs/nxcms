@@ -13,10 +13,12 @@
     <header>
         <nav>
           <ul>
+            {% if page_name %}
             <li><b>{{ page_name }}</b></li>
+            {% endif %}
             <li><a href="{% url 'homepage:homepage' %}">Homepage</a></li>
             <li><a href="{% url 'blog:blog' %}">Blog</a></li>
-            <li><a href="#">About me</a></li>
+            <li><a href="{% url 'links:links' %}">Links</a></li>
             {% if user.is_authenticated %}
             <li class="right"><a href="{% url 'accounts:accounts' %}">Dashboard</a> / <a href="{% url 'accounts:logout' %}">Logout</a></li>
             {% else %}

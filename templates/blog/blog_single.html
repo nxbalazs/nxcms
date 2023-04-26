@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h1>{{ blog_post.title }}</h1>
+{{ blog_post.body | linebreaks }}<br>
+<small>
+{{ blog_post.created_date }}&nbsp;|&nbsp;
+{% for t in blog_post.tags.all %}
+<a href="{% url 'blog:blog_tag' t.tag %}" class="link_on_page">{{ t.tag }}</a>
+{% endfor %}
+</small>
+{% endblock %}

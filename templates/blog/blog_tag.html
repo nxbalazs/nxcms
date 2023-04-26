@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_content %}
+<h1>Tag filter: {{ tag }}</h1>
 {% for post in blog_posts %}
 <h1><a href="{% url 'blog:blog_single' post.pk %}" class="link_on_page" style="text-decoration: none;">{{ post.title }}</a></h1>
 {{ post.body | linebreaks | slice:'500' }}<br>

@@ -6,13 +6,14 @@
     <div class="tab-header">
         <button class="tab-button active" data-tab="tab1">Edit homepage</button>
         <button class="tab-button" data-tab="tab2">Post a blog</button>
-        <button class="tab-button" data-tab="tab3">Site settings</button>
+        <button class="tab-button" data-tab="tab3">Links</button>
+        <button class="tab-button" data-tab="tab4">Site settings</button>
     </div>
     <div class="tab-content">
         <div class="tab-panel active" data-tab="tab1">
         <form method="POST">
             {% csrf_token %}
-            <h1>Homepage edit:</h1>
+            <h1>Homepage edit</h1>
             <label>Title</label><br>
             <input type="text" name="title" class="user-input" value="{{ homepage_body.title }}">
             <br>
@@ -23,9 +24,35 @@
         </form>
         </div>
         <div class="tab-panel" data-tab="tab2">
-        <h2>Post a blog</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Add a new blogpost</h1>
+            <label>Blog title</label><br>
+            <input type="text" name="blog_title" class="user-input" placeholder="Blog title">
+            <br>
+            <label>Blog body</label><br>
+            <textarea name="blog_body" class="user-input" rows="10" cols="50"></textarea>
+            <br>
+            <label>Blog tags</label><br>
+            <input type="text" name="blog_tags" class="user-input" placeholder="separate labels by commas">
+            <br>
+            <input type="submit" value="Post" class="button-input" name="blogpost_form">
+        </form>
         </div>
-        <div class="tab-panel" data-tab="tab3">
+        <div class="tab-panel" data-tab="tab2">
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Add new link</h1>
+            <label>Link name</label><br>
+            <input type="text" name="link_name" class="user-input">
+            <br>
+            <label>Link url</label><br>
+            <input type="text" name="link_url" class="user-input">
+            <br>
+            <input type="submit" value="Add" class="button-input" name="link_form">
+        </form>
+        </div>
+        <div class="tab-panel" data-tab="tab4">
         <form method="POST">
             {% csrf_token %}
             <h1>Site settings</h1>

@@ -3,6 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from homepage.models import HomepageBody, PageSettings
+from blog.models import BlogPost, BlogTags
+from links.models import Links
 
 # Create your views here.
 @login_required()
@@ -49,6 +51,35 @@ def accounts_view(request):
         )
         page_settings_post.save()
         return redirect('homepage:homepage')
+    
+    # new blogpost
+    if 'blogpost_form' in request.POST:
+        title = request.POST.get('blog_title')
+        body = request.POST.get('blog_body')
+        tags = request.POST.get('blog_tags')
+        separated_tags = tags.split(',')
+        new_tags = []
+        for tag in separated_tags:
+            new_tag, _ = BlogTags.objects.get_or_create(tag=tag.lstrip())
+            new_tags.append(new_tag)
+        blog_post = BlogPost(
+            title = title,
+            body = body,
+        )
+        blog_post.save()
+        blog_post.tags.add(*new_tags)
+        return redirect('blog:blog')
+    
+    # add new link
+    if 'link_form' in request.POST:
+        link_name = request.POST.get('link_name')
+        link_url = request.POST.get('link_url')
+        new_link_post = Links(
+            name = link_name,
+            url = link_url,
+        )
+        new_link_post.save()
+        return redirect('links:links')
     
     return render(request, 'accounts/dashboard.html', context)
 
