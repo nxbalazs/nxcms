@@ -9,8 +9,6 @@ body {
 header {
     background-color: #ffffff;
     color: #000000;
-    display: flex;
-    justify-content: space-between;
     padding: 20px;
     width: 100%;
     border-bottom: 1px solid #383838;
@@ -18,23 +16,26 @@ header {
 
 nav {
     width: 60%;
-    display: flex;
-    justify-content: flex-start;
     margin: 0 auto;
 }
 
 nav ul {
+    width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
 nav li {
+    display: inline-block;
     margin-right: 20px;
 }
 
-nav li:last-child {
+nav li.right {
+    float: right;
+}
+
+li:last-child {
     margin-right: 0;
 }
 
@@ -87,4 +88,24 @@ nav a:hover, nav a:visited:hover {
 .fixed-position {
     position: fixed;
     bottom: 0;
+}
+
+.link_on_page {
+    color: #000000;
+    text-decoration: underline;
+    -webkit-transition: color 0.5s ease-in-out;
+    -moz-transition: color 0.5s ease-in-out;
+    -ms-transition: color 0.5s ease-in-out;
+    -o-transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
+}
+
+.link_on_page:hover {
+    color: #5b4cac;
+    text-decoration: underline;
+    -webkit-transition: color 0.5s ease-in-out;
+    -moz-transition: color 0.5s ease-in-out;
+    -ms-transition: color 0.5s ease-in-out;
+    -o-transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
 }

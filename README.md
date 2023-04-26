@@ -1,2 +1,2 @@
 # nxcms
-Content management system
+Content management system - not yet ready for use
