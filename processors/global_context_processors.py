@@ -6,9 +6,9 @@ def page_settings(request):
         return {
             'page_name': page_settings.name,
             'page_footer': page_settings.footer_text,
+            'page_settings': page_settings
             }
     except:
         return {
-            'page_name': 'nxcms',
             'page_footer': 'Created by Balázs Nagy - 2023 - All rights reserved',
             }

@@ -16,13 +16,13 @@
             {% if page_name %}
             <li><b>{{ page_name }}</b></li>
             {% endif %}
-            <li><a href="{% url 'homepage:homepage' %}">Homepage</a></li>
-            <li><a href="{% url 'blog:blog' %}">Blog</a></li>
-            <li><a href="{% url 'links:links' %}">Links</a></li>
+            <li><a href="{% url 'homepage:homepage' %}">{% if page_settings.menu1_text %}{{ page_settings.menu1_text }}{% else %}Homepage{% endif %}</a></li>
+            <li><a href="{% url 'blog:blog' %}">{% if page_settings.menu2_text %}{{ page_settings.menu2_text }}{% else %}Blog{% endif %}</a></li>
+            <li><a href="{% url 'links:links' %}">{% if page_settings.menu3_text %}{{ page_settings.menu3_text }}{% else %}Links{% endif %}</a></li>
             {% if user.is_authenticated %}
-            <li class="right"><a href="{% url 'accounts:accounts' %}">Dashboard</a> / <a href="{% url 'accounts:logout' %}">Logout</a></li>
+            <li class="right"><a href="{% url 'accounts:accounts' %}">{% if page_settings.menu6_text %}{{ page_settings.menu6_text }}{% else %}Dashboard{% endif %}</a> / <a href="{% url 'accounts:logout' %}">{% if page_settings.menu5_text %}{{ page_settings.menu5_text }}{% else %}Logout{% endif %}</a></li>
             {% else %}
-            <li class="right"><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li class="right"><a href="{% url 'accounts:login' %}">{% if page_settings.menu4_text %}{{ page_settings.menu4_text }}{% else %}Login{% endif %}</a></li>
             {% endif %}
           </ul>
         </nav>

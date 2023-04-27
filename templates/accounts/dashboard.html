@@ -51,6 +51,10 @@
             <br>
             <input type="submit" value="Add" class="button-input" name="link_form">
         </form>
+        <hr>
+        {% for link in links_list %}
+        <p style="display: inline;"><form method="POST" id="rm_link_form">{% csrf_token %}{{ link.name }} - {{ link.url }} - <input type="hidden" name="link_pk" value="{{ link.pk }}"><input type="hidden" name="rm_link_form"><a href="" onclick="document.getElementById('rm_link_form').submit(); return false;" class="link_on_page">Remove</a></form></p>
+        {% endfor %}
         </div>
         <div class="tab-panel" data-tab="tab4">
         <form method="POST">
@@ -61,6 +65,24 @@
             <br>
             <label>Footer text</label><br>
             <input type="text" name="footer_text" class="user-input" value="{{ page_settings.footer_text }}">
+            <br>
+            <label>Homepage menu item name</label><br>
+            <input type="text" name="homepage_text" class="user-input" value="{{ page_settings.menu1_text }}">
+            <br>
+            <label>Blog menu item name</label><br>
+            <input type="text" name="blog_text" class="user-input" value="{{ page_settings.menu2_text }}">
+            <br>
+            <label>Link menu item name</label><br>
+            <input type="text" name="link_text" class="user-input" value="{{ page_settings.menu3_text }}">
+            <br>
+            <label>Login menu item name</label><br>
+            <input type="text" name="login_text" class="user-input" value="{{ page_settings.menu4_text }}">
+            <br>
+            <label>Logout menu item name</label><br>
+            <input type="text" name="logout_text" class="user-input" value="{{ page_settings.menu5text }}">
+            <br>
+            <label>Dashboard menu item name</label><br>
+            <input type="text" name="dashboard_text" class="user-input" value="{{ page_settings.menu6_text }}">
             <br>
             <input type="submit" value="Save" class="button-input" name="site_settings_form">
         </form>

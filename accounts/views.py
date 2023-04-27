@@ -20,10 +20,15 @@ def accounts_view(request):
             page_settings = PageSettings.objects.get(pk=1)
         except:
             page_settings = False
+        try:
+            links_list = Links.objects.all()
+        except:
+            links_list = False
         context = {
             'admin': True,
             'homepage_body': homepage_body,
             'page_settings': page_settings,
+            'links_list': links_list,
             'page_title': 'Dashboard',
         }
     else:
@@ -47,9 +52,21 @@ def accounts_view(request):
     if 'site_settings_form' in request.POST:
         page_name = request.POST.get('page_name')
         footer_text = request.POST.get('footer_text')
+        homepage_text = request.POST.get('homepage_text')
+        blog_text = request.POST.get('blog_text')
+        link_text = request.POST.get('link_text')
+        login_text = request.POST.get('login_text')
+        logout_text = request.POST.get('logout_text')
+        dashboard_text = request.POST.get('dashboard_text')
         page_settings_post = PageSettings(
             name = page_name,
-            footer_text = footer_text
+            footer_text = footer_text,
+            menu1_text = homepage_text,
+            menu2_text = blog_text,
+            menu3_text = link_text,
+            menu4_text = login_text,
+            menu5_text = logout_text,
+            menu6_text = dashboard_text,
         )
         page_settings_post.save()
         return redirect('homepage:homepage')
@@ -82,6 +99,12 @@ def accounts_view(request):
         )
         new_link_post.save()
         return redirect('links:links')
+    
+    # remove link
+    if 'rm_link_form' in request.POST:
+        link_pk = request.POST.get('link_pk')
+        Links.objects.filter(pk=link_pk).delete()
+        return redirect('accounts:accounts')
     
     return render(request, 'accounts/dashboard.html', context)
 
