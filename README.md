@@ -9,9 +9,6 @@ Blog post edit not yet created - edit posts from django admin yoursite.com/admin
 git clone https://github.com/nxbalazs/nxcms
 ```
 ```
-cd nxcms
-```
-```
 pip install django
 ```
 ```
