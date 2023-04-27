@@ -7,10 +7,12 @@ def homepage(request):
         homepage_body = HomepageBody.objects.get(pk=1)
         context = {
             'homepage_body': homepage_body,
+            'page_title': 'Homepage',
         }
     except:
         context = {
             'homepage_body': 'False',
+            'page_title': 'Homepage',
         }
 
     return render(request, 'homepage/homepage.html', context)

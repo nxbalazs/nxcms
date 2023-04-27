@@ -24,10 +24,12 @@ def accounts_view(request):
             'admin': True,
             'homepage_body': homepage_body,
             'page_settings': page_settings,
+            'page_title': 'Dashboard',
         }
     else:
         context = {
             'admin': False,
+            'page_title': 'Dashboard',
         }
 
     # edit homepage
@@ -91,7 +93,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             return redirect('accounts:accounts')
-    return render(request, 'accounts/login.html', {})
+    return render(request, 'accounts/login.html', {'page_title': 'Login',})
 
 
 @login_required()
@@ -99,4 +101,4 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('homepage:homepage')
-    return render(request, 'accounts/logout.html', {})
+    return render(request, 'accounts/logout.html', {'page_title': 'Logout',})
