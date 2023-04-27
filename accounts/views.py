@@ -93,6 +93,9 @@ def accounts_view(request):
     if 'link_form' in request.POST:
         link_name = request.POST.get('link_name')
         link_url = request.POST.get('link_url')
+        link_url = link_url.replace('https://', '')
+        link_url = link_url.replace('http://', '')
+        link_url = link_url.replace('www.', '')
         new_link_post = Links(
             name = link_name,
             url = link_url,
