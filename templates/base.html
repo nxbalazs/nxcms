@@ -24,6 +24,12 @@
             {% else %}
             <li class="right"><a href="{% url 'accounts:login' %}">{% if page_settings.menu4_text %}{{ page_settings.menu4_text }}{% else %}Login{% endif %}</a></li>
             {% endif %}
+            <li class="right" style="padding-right: 10px">
+                <input type="text" placeholder="Search..." class="search-input" id="search-dropdown-input">
+                <div id="search-dropdown" class="dropdown-menu">
+                <a href="">Link</a>
+                </div>
+            </li>
           </ul>
         </nav>
       </header>

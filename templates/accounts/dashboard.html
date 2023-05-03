@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-{{ admin }}
+{% if admin == True %}
 <div class="tab-container">
     <div class="tab-header">
         <button class="tab-button active" data-tab="tab1">Edit homepage</button>
@@ -89,4 +89,7 @@
         </div>
     </div>
 </div>
+{% else %}
+not admin
+{% endif %}
 {% endblock %}
