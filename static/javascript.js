@@ -4,8 +4,36 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementById('search-dropdown').style.display = 'block';
     });
 });
-document.getElementById('search-dropdown-input').addEventListener('blur', function (event){
-    document.getElementById('search-dropdown').style.display = 'none';
+
+document.addEventListener('mousedown', function(event){
+    if (event.target.matches('.search-dropdown')) {
+        document.getElementById('search-dropdown-input').addEventListener('blur', function (event){
+            document.getElementById('search-dropdown').style.display = 'none';
+        });
+    }
+})
+
+
+const searchInput = document.querySelector('#search-dropdown-input');
+const searchResults = document.querySelector('#search-dropdown');
+
+searchInput.addEventListener('input', (event) => {
+    const searchValue = event.target.value;
+    if (searchValue.length > 1) {
+      fetch(`/search/?search=${searchValue}`)
+        .then(response => response.json())
+        .then(data => {
+          searchResults.innerHTML = '';
+          data.results.forEach(blogPost => {
+            const a = document.createElement('a');
+            a.textContent = blogPost.title;
+            a.href = `/blog/${blogPost.pk}`;
+            searchResults.appendChild(a);
+          });
+        });
+    } else {
+        searchResults.innerHTML = '';
+    }
 });
 
 
