@@ -6,12 +6,10 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 document.addEventListener('mousedown', function(event){
-    if (event.target.matches('.search-dropdown')) {
-        document.getElementById('search-dropdown-input').addEventListener('blur', function (event){
-            document.getElementById('search-dropdown').style.display = 'none';
-        });
+    if (event.target.tagName.toLowerCase() !== 'a') {
+        document.getElementById('search-dropdown').style.display = 'none';
     }
-})
+});
 
 
 const searchInput = document.querySelector('#search-dropdown-input');
