@@ -9,6 +9,6 @@
 {% for t in post.tags.all %}
 <a href="{% url 'blog:blog_tag' t.tag %}" class="link_on_page">{{ t.tag }}</a>
 {% endfor %}
-</small>
+</small><br><br>
 {% endfor %}
 {% endblock %}

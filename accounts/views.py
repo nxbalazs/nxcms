@@ -6,6 +6,7 @@ from homepage.models import HomepageBody, PageSettings
 from blog.models import BlogPost, BlogTags
 from links.models import Links
 
+
 # Create your views here.
 @login_required()
 def accounts_view(request):
@@ -42,12 +43,12 @@ def accounts_view(request):
         title = request.POST.get('title')
         body = request.POST.get('body')
         body_post = HomepageBody(
-            title = title,
-            body = body
+            title=title,
+            body=body
         )
         body_post.save()
         return redirect('homepage:homepage')
-    
+
     # edit settings
     if 'site_settings_form' in request.POST:
         page_name = request.POST.get('page_name')
@@ -59,18 +60,18 @@ def accounts_view(request):
         logout_text = request.POST.get('logout_text')
         dashboard_text = request.POST.get('dashboard_text')
         page_settings_post = PageSettings(
-            name = page_name,
-            footer_text = footer_text,
-            menu1_text = homepage_text,
-            menu2_text = blog_text,
-            menu3_text = link_text,
-            menu4_text = login_text,
-            menu5_text = logout_text,
-            menu6_text = dashboard_text,
+            name=page_name,
+            footer_text=footer_text,
+            menu1_text=homepage_text,
+            menu2_text=blog_text,
+            menu3_text=link_text,
+            menu4_text=login_text,
+            menu5_text=logout_text,
+            menu6_text=dashboard_text,
         )
         page_settings_post.save()
         return redirect('homepage:homepage')
-    
+
     # new blogpost
     if 'blogpost_form' in request.POST:
         title = request.POST.get('blog_title')
@@ -82,13 +83,13 @@ def accounts_view(request):
             new_tag, _ = BlogTags.objects.get_or_create(tag=tag.lstrip())
             new_tags.append(new_tag)
         blog_post = BlogPost(
-            title = title,
-            body = body,
+            title=title,
+            body=body,
         )
         blog_post.save()
         blog_post.tags.add(*new_tags)
         return redirect('blog:blog')
-    
+
     # add new link
     if 'link_form' in request.POST:
         link_name = request.POST.get('link_name')
@@ -97,18 +98,18 @@ def accounts_view(request):
         link_url = link_url.replace('http://', '')
         link_url = link_url.replace('www.', '')
         new_link_post = Links(
-            name = link_name,
-            url = link_url,
+            name=link_name,
+            url=link_url,
         )
         new_link_post.save()
         return redirect('links:links')
-    
+
     # remove link
     if 'rm_link_form' in request.POST:
         link_pk = request.POST.get('link_pk')
         Links.objects.filter(pk=link_pk).delete()
         return redirect('accounts:accounts')
-    
+
     return render(request, 'accounts/dashboard.html', context)
 
 
@@ -119,7 +120,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             return redirect('accounts:accounts')
-    return render(request, 'accounts/login.html', {'page_title': 'Login',})
+    return render(request, 'accounts/login.html', {'page_title': 'Login', })
 
 
 @login_required()
@@ -127,4 +128,4 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('homepage:homepage')
-    return render(request, 'accounts/logout.html', {'page_title': 'Logout',})
+    return render(request, 'accounts/logout.html', {'page_title': 'Logout', })
